@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  web:
+    image: nginx:1.23.1
+    container_name: nginx_host
+    ports:
+      - 80:80
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    tmpfs:
+      - /run/nginx
+
+###################################
+# docker操作
+# docker-compose up
+# docker-compose build --no-cache
+# docker-compose down
+# docker-compose exec <サービス名> bash
+# mysqlに入って操作
+# docker-compose exec db /bin/bash
+# mysql -u root -p
+# show databases;
+# use test_database;
+# show tables;
+#
