@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  # MySQL
+  db:
+    image: mysql:8.0.30
+    #設定がない場合は[フォルダ名_service名_数]になる
+    container_name: mysql_host
+    environment:
+      #MYSQL_*に関してはこちらに書いてある
+      #https://hub.docker.com/_/mysql
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test_database
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+      #OSによって使えたり使えなかったりするので微妙
+      #https://
+      TZ: 'Asia/Tokyo'
+    #公式資料が見あたらず
+    #https://stackoverflow.com/questions/45729326/how-to-change-the-default-character-set-of-mysql-using-docker-compose
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    #https://docs.docker.com/compose/compose-file/#tmpfs
+    #https://docs.docker.com/compose/compose-file/compose-file-v3/#tmpfs
+    #https://matsuand.github.io/docs.docker.jp.onthefly/storage/tmpfs/
+    tmpfs:
+    - /run/mysqld
+    #左がhost上でアクセスできるポート、右がコンテナ内のポート
+    #https://docs.docker.com/compose/compose-file/#ports
+    #https://docs.docker.com/compose/compose-file/compose-file-v3/#ports
+    ports:
+    - 13306:3306
+
+###################################
+# docker操作
+# docker-compose up
+# docker-compose build --no-cache
+# docker-compose down
+# docker-compose exec <サービス名> bash
+# mysqlに入って操作
+# docker-compose exec db /bin/bash
+# mysql -u root -p
+# show databases;
+# use test_database;
+# show tables;
+#
