@@ -2,21 +2,39 @@ version: "3"
 
 services:
   web:
-    image: nginx:1.23.1
     container_name: nginx_host
+    build:
+      context: ./
+      dockerfile: ./docker/nginx/Dockerfile
     ports:
       - 80:80
     volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-    tmpfs:
-      - /run/nginx
+      - type: bind
+        source: ./nginx/default.conf
+        target: /etc/nginx/conf.d/default.conf
     depends_on:
       - app
   app:
-    image: php:8.1.10-fpm
     container_name: php-fpm_host
+    #Dockerfileはその配置より親のフォルダにアクセスできないがdocker-composeを使用する場合は
+    #context配下からパスを指定できる
+    #なおdocker imageでimageファイルを作るときも同じ問題が発生するので-fでファイルだけ指定して
+    #docker-compose.ymlがある階層で以下を実行する
+    #docker image build -t test/app:latest -f ./docker/php/Dockerfile .
+    build:
+      context: ./
+      dockerfile: ./docekr/php/Dockerfile
     volumes:
-       - ./php:/var/www/html
+      #AWS EMRなどにimageをアップしてECSを使うことになるのでファイルのCOPYはDockerfileで行うべきなので
+      #docker-composeではディレクトリを共有するだけにしておいた方がよい
+      #volumeだと上書きされるので駄目っぽい？
+      #https://qiita.com/aki_55p/items/db706d0113cbdad6c51d
+      - type: bind
+        source: ./php
+        target: /var/www/html
+
+    #volumes:
+    #    - ./php:/var/www/html
     #    - ./docker/app/php.ini:/usr/local/etc/php/php.ini
     # tmpfs:
     #   - /run/php-fpm
