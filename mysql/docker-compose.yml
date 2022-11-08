@@ -5,7 +5,7 @@ services:
   db:
     image: mysql:8.0.30
     #設定がない場合は[フォルダ名_service名_数]になる
-    container_name: mysql_host
+    #container_name: mysql_host
     environment:
       #MYSQL_*に関してはこちらに書いてある
       #https://hub.docker.com/_/mysql
@@ -28,7 +28,10 @@ services:
     #https://docs.docker.com/compose/compose-file/#ports
     #https://docs.docker.com/compose/compose-file/compose-file-v3/#ports
     ports:
-    - 13306:3306
+    - 3306:3306
+    #docker-entrypoint-initdb.d内に初期実行SQLを入れることが可能
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
 
 ###################################
 # docker操作
