@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  web:
+    container_name: php-apache
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    ports:
+      - 80:80
+
+
+#apache2ctl configtest
+#service apache2 reload
+#docker container run -it php:7.3.29-apache-buster /bin/bash
