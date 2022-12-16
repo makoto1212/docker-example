@@ -22,6 +22,8 @@ services:
     #https://docs.docker.com/compose/compose-file/#tmpfs
     #https://docs.docker.com/compose/compose-file/compose-file-v3/#tmpfs
     #https://matsuand.github.io/docs.docker.jp.onthefly/storage/tmpfs/
+    #auroraはsqlmode空なので同じにする場合のコマンドは以下になる
+    #command: mysqld --sql-mode=""
     tmpfs:
     - /run/mysqld
     #左がhost上でアクセスできるポート、右がコンテナ内のポート
