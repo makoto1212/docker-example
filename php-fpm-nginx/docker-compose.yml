@@ -23,7 +23,7 @@ services:
     #docker image build -t test/app:latest -f ./docker/php/Dockerfile .
     build:
       context: ./
-      dockerfile: ./docekr/php/Dockerfile
+      dockerfile: ./docker/php/Dockerfile
     volumes:
       #AWS EMRなどにimageをアップしてECSを使うことになるのでファイルのCOPYはDockerfileで行うべきなので
       #docker-composeではディレクトリを共有するだけにしておいた方がよい
