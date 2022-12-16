@@ -12,5 +12,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Build
+      - name: Build MySQL
         run: cd ./mysql && sudo docker-compose build --no-cache --force-rm
+
+      - name: Build PHP-Apache
+        run: cd ./php-apache && sudo docker-compose build --no-cache --force-rm
+
+      - name: Build PHP-FPM-Nginx
+        run: cd ./php-fpm-nginx && sudo docker-compose build --no-cache --force-rm
