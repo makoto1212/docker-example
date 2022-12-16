@@ -1,0 +1,16 @@
+name: docker-build
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build
+        run: cd ./mysql && sudo docker-compose build --no-cache --force-rm
