@@ -16,14 +16,19 @@ services:
       #OSによって使えたり使えなかったりするので微妙
       #https://
       TZ: 'Asia/Tokyo'
-    #公式資料が見あたらず
+    #commandの公式資料が見あたらず
     #https://stackoverflow.com/questions/45729326/how-to-change-the-default-character-set-of-mysql-using-docker-compose
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    #MySQL5.7はcharacter_set_serverがlatin1,collation-serverがlatin1_swedish_ci
+    #MySQL5.7でcharacter-set-server=utf8mb4を指定した場合はデフォルトがcollation-serverがutf8mb4_general_ci
+    #MySQL8.0はcharacter_set_serverがutf8mb4,collation-serverがutf8mb4_0900_ai_ci
+    #show variables like '%char%';とshow variables like '%coll%';で設定確認可能
+    #auroraはsqlmode空なので同じにする場合のコマンドは以下になる
+    #command: mysqld --sql-mode=""
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    #tmpfsについて
     #https://docs.docker.com/compose/compose-file/#tmpfs
     #https://docs.docker.com/compose/compose-file/compose-file-v3/#tmpfs
     #https://matsuand.github.io/docs.docker.jp.onthefly/storage/tmpfs/
-    #auroraはsqlmode空なので同じにする場合のコマンドは以下になる
-    #command: mysqld --sql-mode=""
     tmpfs:
     - /run/mysqld
     #左がhost上でアクセスできるポート、右がコンテナ内のポート
