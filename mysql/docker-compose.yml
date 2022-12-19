@@ -22,6 +22,7 @@ services:
     #MySQL5.7でcharacter-set-server=utf8mb4を指定した場合はデフォルトがcollation-serverがutf8mb4_general_ci
     #MySQL8.0はcharacter_set_serverがutf8mb4,collation-serverがutf8mb4_0900_ai_ci
     #show variables like '%char%';とshow variables like '%coll%';で設定確認可能
+    #SHOW FULL COLUMNS FROM テーブル名で既存の定義を確認可能;
     #auroraはsqlmode空なので同じにする場合のコマンドは以下になる
     #command: mysqld --sql-mode=""
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
