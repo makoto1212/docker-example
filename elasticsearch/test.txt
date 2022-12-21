@@ -1,0 +1,15 @@
+Elasticsearch2.3のドキュメント
+https://www.elastic.co/guide/en/elasticsearch/reference/2.3/docs-index_.html
+
+Elasticsearchで最初にぶつかるワードたち
+https://qiita.com/a4_nghm/items/94ed0640ed8a15ce1592
+
+Elasticsearch から type が無くなる
+https://qiita.com/mkisono/items/4bcaedeced3b70312976
+Elasticsearch 6 では「_type は Deprecared」
+
+"タイプ"廃止へ。"タイプレス"が登場！
+https://www.elastic.co/jp/blog/moving-from-types-to-typeless-apis-in-elasticsearch-7-0
+
+メモ
+postでidを自動採番できるが数値ではない
