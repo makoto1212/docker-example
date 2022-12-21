@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  db:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    ports:
+    - 8000:8000
+
+# aws dynamodb list-tables --endpoint-url http://localhost:8000
+#
+#
