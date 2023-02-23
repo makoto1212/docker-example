@@ -1,0 +1,18 @@
+PUT <index名>
+{
+  "<mappings>": {
+    "<マッピングタイプ>": {
+      "<メタフィールド>": { "enabled": false  },
+      "<properties>": {
+        "<data>": { "<type>": "<integer>" }
+      }
+    },
+    "<マッピングタイプ>": {
+      "<properties>": {
+        "<data>": { "<type>": "<integer>" }
+      }
+    },
+  }
+}
+
+マッピングタイプはv7から廃止されている

@@ -11,6 +11,10 @@ bulk:
 match-all:
 	curl -s -XGET 'localhost:9200/_search?pretty' -d @match-all.json | jq
 
+search:
+	curl -s -XGET 'localhost:9200/_search?pretty' -d @search.json | jq
+
+
 #index一覧を表示
 indices:
 	curl 'localhost:9200/_cat/indices?v'

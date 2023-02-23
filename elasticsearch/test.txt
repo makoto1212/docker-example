@@ -1,6 +1,9 @@
 Elasticsearch2.3のドキュメント
 https://www.elastic.co/guide/en/elasticsearch/reference/2.3/docs-index_.html
 
+mapping
+https://www.elastic.co/guide/en/elasticsearch/reference/2.3/mapping.html
+
 Elasticsearchで最初にぶつかるワードたち
 https://qiita.com/a4_nghm/items/94ed0640ed8a15ce1592
 
@@ -13,3 +16,21 @@ https://www.elastic.co/jp/blog/moving-from-types-to-typeless-apis-in-elasticsear
 
 メモ
 postでidを自動採番できるが数値ではない
+
+
+queryのbodyに検索設定を書くことをDSLという
+https://www.elastic.co/guide/en/elasticsearch/reference/2.3/query-dsl.html
+https://www.elastic.co/guide/en/elasticsearch/reference/2.3/search-request-body.html
+
+full-text-queries(全文クエリ)
+https://www.elastic.co/guide/en/elasticsearch/reference/2.3/full-text-queries.html
+
+term-level-queries(用語クエリ)
+https://www.elastic.co/guide/en/elasticsearch/reference/2.3/term-level-queries.html
+
+
+全文と用語の違い
+https://medium.com/veltra-engineering/elasticsearch-fulltext-termlevel-772e8a9152b1
+https://qiita.com/whiteblues1017/items/236754f735f756d21d1c
+
+https://dev.classmethod.jp/articles/es-02/
