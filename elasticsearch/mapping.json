@@ -1,0 +1,16 @@
+{
+    "mappings" : {
+        "pictorial-book" : {
+            "dynamic": false,
+            "properties" : {
+                "name" : {
+                    "type" : "string",
+                    "index": "not_analyzed"
+                },
+                "description" : {
+                    "type" : "string"
+                }
+            }
+        }
+    }
+}
