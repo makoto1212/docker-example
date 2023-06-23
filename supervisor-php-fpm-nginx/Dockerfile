@@ -1,14 +1,15 @@
 FROM alpine:3.18.2
 
-RUN apk update --no-cache && apk add --no-cache \
+RUN apk update --no-cache && apk upgrade --no-cache && apk add --no-cache \
+    php82 \
     php82-fpm \
     nginx \
     supervisor \
     curl
-RUN rm -rf /var/cache/apk/*
 
 # supervisord
 RUN mkdir -p /etc/supervisor.d
+RUN mv /etc/supervisord.conf /etc/supervisord.conf_backup
 COPY supervisord.conf /etc/supervisord.conf
 
 # php-fpm
