@@ -23,3 +23,6 @@ jobs:
 
       - name: Build PHP-FPM-Nginx
         run: cd ./php-fpm-nginx && docker-compose build --no-cache --force-rm
+
+      - name: Build Supervisor-PHP-FPM-Nginx
+        run: cd ./supervisor-php-fpm-nginx && docker-compose build --no-cache --force-rm
